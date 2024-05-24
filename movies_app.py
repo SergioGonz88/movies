@@ -8,7 +8,18 @@ key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="reto-firebase-sergio")
 dbNames = db.collection("movies")
-st.header("Nuevo registro")
+st.title("Sergio Netflix app")
+
+def get_movies():
+    collection_ref = db.collection("movies")
+    movies = collection_ref.stream()
+    return [doc.to_dict() for doc in movies]
+
+# Sidebar
+st.sidebar.header('Opciones')
+show_movies = st.sidebar.checkbox('Mostrar Todos los Filmes')
+
+
 company = st.text_input("Company")
 director = st.text_input("Director")
 genre = st.selectbox(
@@ -36,14 +47,14 @@ def loadByName(name):
     currentName = myname
   return currentName
 
-st.sidebar.subheader("Buscar nombre")
+st.sidebar.subheader("Buscar filmes")
 nameSearch = st.sidebar.text_input("nombre")
 btnFiltrar = st.sidebar.button("Buscar")
 
 if btnFiltrar:
   doc = loadByName(nameSearch)
   if doc is None:
-    st.sidebar.write("Nombre no existe")
+    st.sidebar.write("Filme no existe")
   else:
     st.sidebar.write(doc.to_dict())
 # ...
