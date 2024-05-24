@@ -20,14 +20,13 @@ st.sidebar.header('Opciones')
 show_movies = st.sidebar.checkbox('Mostrar Todos los Filmes')
 
 
-company = st.text_input("Company")
-director = st.text_input("Director")
-genre = st.selectbox(
-    'Select genre',
-    ('Male','Female','Other'))
-name = st.text_input("Name")
-
-submit = st.button("Crear nuevo registro")
+#company = st.text_input("Company")
+#director = st.text_input("Director")
+#genre = st.selectbox(
+#    'Select genre',
+#    ('Male','Female','Other'))
+#name = st.text_input("Name")
+#submit = st.button("NUevo filme")
 
 #Once the name has submitted, upload it to the database
 if company and director and genre and name and submit:
@@ -48,8 +47,8 @@ def loadByName(name):
   return currentName
 
 st.sidebar.subheader("Buscar filmes")
-nameSearch = st.sidebar.text_input("nombre")
-btnFiltrar = st.sidebar.button("Buscar")
+nameSearch = st.sidebar.text_input("Titulo del filme")
+btnFiltrar = st.sidebar.button("Buscar filme")
 
 if btnFiltrar:
   doc = loadByName(nameSearch)
