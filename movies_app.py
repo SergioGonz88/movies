@@ -28,16 +28,17 @@ show_movies = st.sidebar.checkbox('Mostrar Todos los Filmes')
 #name = st.text_input("Name")
 #submit = st.button("NUevo filme")
 
-#Once the name has submitted, upload it to the database
-if company and director and genre and name and submit:
-  doc_ref = db.collection("movies").document(name)
-  doc_ref.set({
-     "company": company,
-     "director": director,
-     "genre": genre,
-     "name": name
-  })
-  st.sidebar.write("Registro inserado correctamente")
+##Once the name has submitted, upload it to the database
+#if company and director and genre and name and submit:
+#  doc_ref = db.collection("movies").document(name)
+#  doc_ref.set({
+#     "company": company,
+#     "director": director,
+#     "genre": genre,
+#     "name": name
+#  })
+#  st.sidebar.write("Registro inserado correctamente")
+
 # ...
 def loadByName(name):
   names_ref = dbNames.where(u'name', u'==', name)
