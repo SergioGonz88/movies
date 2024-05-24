@@ -19,6 +19,17 @@ def get_movies():
 st.sidebar.header('Opciones')
 show_movies = st.sidebar.checkbox('Mostrar Todos los Filmes')
 
+# Mostrar todos los filmes si el checkbox está marcado
+if show_movies:
+    st.subheader('Todos los Filmes')
+    movies = get_movies()
+    for movie in movies:
+        st.write(movie)
+
+#names_ref = list(db.collection(u'movies').stream())
+#names_dict = list(map(lambda x: x.to_dict(), names_ref))
+#names_dataframe = pd.DataFrame(names_dict)
+#st.dataframe(names_dataframe)
 
 #company = st.text_input("Company")
 #director = st.text_input("Director")
@@ -86,7 +97,3 @@ if btnActualizar:
         }
     )
 # ...
-names_ref = list(db.collection(u'movies').stream())
-names_dict = list(map(lambda x: x.to_dict(), names_ref))
-names_dataframe = pd.DataFrame(names_dict)
-st.dataframe(names_dataframe)
