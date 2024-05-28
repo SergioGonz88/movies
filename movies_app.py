@@ -27,24 +27,6 @@ if show_movies:
     names_dataframe = pd.DataFrame(names_dict)
     st.dataframe(names_dataframe)
 
-#company = st.text_input("Company")
-#director = st.text_input("Director")
-#genre = st.selectbox(
-#    'Select genre',
-#    ('Male','Female','Other'))
-#name = st.text_input("Name")
-#submit = st.button("NUevo filme")
-
-##Once the name has submitted, upload it to the database
-#if company and director and genre and name and submit:
-#  doc_ref = db.collection("movies").document(name)
-#  doc_ref.set({
-#     "company": company,
-#     "director": director,
-#     "genre": genre,
-#     "name": name
-#  })
-#  st.sidebar.write("Registro inserado correctamente")
 
 # ...
 def loadByName(name):
@@ -93,3 +75,23 @@ if btnActualizar:
         }
     )
 # ...
+st.sidebar.markdown("""---""")
+newname2 = st.sidebar.text_input("Nuevo filme")
+#company = st.text_input("Company")
+#director = st.text_input("Director")
+#genre = st.selectbox(
+#    'Select genre',
+#    ('Male','Female','Other'))
+#name = st.text_input("Name")
+#submit = st.button("NUevo filme")
+
+##Once the name has submitted, upload it to the database
+#if company and director and genre and name and submit:
+#  doc_ref = db.collection("movies").document(name)
+#  doc_ref.set({
+#     "company": company,
+#     "director": director,
+#     "genre": genre,
+#     "name": name
+#  })
+#  st.sidebar.write("Registro inserado correctamente")
