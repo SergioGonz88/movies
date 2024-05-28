@@ -48,12 +48,6 @@ if btnFiltrar:
     st.sidebar.write(doc.to_dict())
 
 # ...
-def loadByDirector(name):
-  director_ref = dbNames.where(u'director', u'==', name)
-  currentDirector = None
-  for mydirector in director_ref.stream():
-    currentDirector = mydirector
-  return currentDirector
 
 st.sidebar.subheader("Seleccionar director")
 # Obtener nombres de directores de la colección "movies"
@@ -64,12 +58,12 @@ directores_docs = directores_ref.stream()
 nombres_directores = set()
 for doc in directores_docs:
     nombres_directores.add(doc.to_dict()["director"])
-    
+
 # Convertir nombres de directores en lista para usar en el selectbox
 nombres_directores = list(nombres_directores)
 
 # Mostrar nombres de directores en un selectbox
-selected_director = st.selectbox('Selecciona un director', nombres_directores)
+selected_director = st.sidebar.selectbox('Selecciona un director', nombres_directores)
 
 # Mostrar nombre seleccionado
 st.write("Director seleccionado:", selected_director)
