@@ -72,15 +72,14 @@ nombres_directores = list(nombres_directores)
 # Mostrar nombres de directores en un selectbox
 selected_director = st.sidebar.selectbox('Selecciona un director', nombres_directores)
 
-# Mostrar nombre seleccionado
-st.write("Director seleccionado:", selected_director)
+# Filtrar datos según el director seleccionado
+query = directores_ref.where("director", "==", selected_director)
+resultados = query.stream()
 
-if selected_director:
-  doc = loadByDirector(selected_director)
-  if doc is None:
-    st.sidebar.write("Filme no existe")
-  else:
-    st.sidebar.write(doc.to_dict())
+# Mostrar resultados en el dashboard
+st.title('Resultados')
+for resultado in resultados:
+    st.write(resultado.to_dict())
 
 # ...
 
