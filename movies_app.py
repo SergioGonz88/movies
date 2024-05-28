@@ -56,8 +56,23 @@ def loadByDirector(name):
   return currentDirector
 
 st.sidebar.subheader("Seleccionar director")
-selected_class = st.selectbox("Select Class", options=dbNames['director'])
-st.write("Selected Class:", selected_class)
+# Obtener nombres de directores de la colección "movies"
+directores_ref = db.collection("movies")
+directores_docs = directores_ref.stream()
+
+# Obtener nombres únicos de directores
+nombres_directores = set()
+for doc in directores_docs:
+    nombres_directores.add(doc.to_dict()["director"])
+    
+# Convertir nombres de directores en lista para usar en el selectbox
+nombres_directores = list(nombres_directores)
+
+# Mostrar nombres de directores en un selectbox
+selected_director = st.selectbox('Selecciona un director', nombres_directores)
+
+# Mostrar nombre seleccionado
+st.write("Director seleccionado:", selected_director)
 
 # ...
 
