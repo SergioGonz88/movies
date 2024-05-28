@@ -49,6 +49,13 @@ if btnFiltrar:
 
 # ...
 
+def loadByDirector(name):
+  names_ref = dbNames.where(u'director', u'==', name)
+  currentName = None
+  for myname in names_ref.stream():
+    currentName = myname
+  return currentName
+
 st.sidebar.subheader("Seleccionar director")
 # Obtener nombres de directores de la colección "movies"
 directores_ref = db.collection("movies")
@@ -67,6 +74,13 @@ selected_director = st.sidebar.selectbox('Selecciona un director', nombres_direc
 
 # Mostrar nombre seleccionado
 st.write("Director seleccionado:", selected_director)
+
+if selected_director:
+  doc = loadByDirector(selected_director)
+  if doc is None:
+    st.sidebar.write("Filme no existe")
+  else:
+    st.sidebar.write(doc.to_dict())
 
 # ...
 
