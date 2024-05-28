@@ -56,12 +56,8 @@ def loadByDirector(name):
   return currentDirector
 
 st.sidebar.subheader("Seleccionar director")
-selected_director = st.sidebar.selectbox('Selecciona un director', dbNames['director'].unique())
-
-filtered_data = dbNames[dbNames['director'] == selected_director]
-
-st.write('**Resultados para', selected_director, '**')
-st.write(filtered_data)
+selected_class = st.radio("Select Class", dbNames['director'].unique())
+st.write("Selected Class:", selected_class)
 
 # ...
 
