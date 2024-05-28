@@ -46,6 +46,23 @@ if btnFiltrar:
     st.sidebar.write("Filme no existe")
   else:
     st.sidebar.write(doc.to_dict())
+
+# ...
+def loadByDirector(name):
+  director_ref = dbNames.where(u'director', u'==', name)
+  currentDirector = None
+  for mydirector in director_ref.stream():
+    currentDirector = mydirector
+  return currentDirector
+
+st.sidebar.subheader("Seleccionar director")
+selected_director = st.sidebar.selectbox('Selecciona un director', dbNames['director'].unique())
+
+filtered_data = dbNames[dbNames['director'] == selected_director]
+
+st.write('**Resultados para', selected_director, '**')
+st.write(filtered_data)
+
 # ...
 
 st.sidebar.markdown("""---""")
@@ -65,7 +82,7 @@ if btnActualizar:
     )
 # ...
 st.sidebar.markdown("""---""")
-newname2 = st.sidebar.text_input("Nuevo filme")
+newfilme = st.sidebar.text_input("Nuevo filme")
 #company = st.text_input("Company")
 #director = st.text_input("Director")
 #genre = st.selectbox(
