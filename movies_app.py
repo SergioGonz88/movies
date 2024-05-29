@@ -13,7 +13,7 @@ dbNames = db.collection("movies")
 st.title("Sergio Netflix app 2")
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="reto-firebase-sergio")
+db = firestore.Client(credentials=creds, project="practica-firebase-sergio")
 dbNames = db.collection("movies")
 st.title("Sergio Netflix app")
 
