@@ -4,18 +4,13 @@ from google.cloud import firestore
 from google.oauth2 import service_account
 
 import json
-#key_dict = json.loads(st.secrets["textkey"])
-#creds = service_account.Credentials.from_service_account_info(key_dict)
-#db = firestore.Client(credentials=creds, project="practica-learning-sergio")
-
-db=firestore.Client.from_service_account_json("practica-firebase-sergio.json")
-dbNames = db.collection("movies")
-st.title("Sergio Netflix app 2")
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="practica-firebase-sergio")
+db = firestore.Client(credentials=creds, project="practica-learning-sergio")
+
+#db=firestore.Client.from_service_account_json("practica-firebase-sergio.json")
 dbNames = db.collection("movies")
-st.title("Sergio Netflix app")
+st.title("Sergio Netflix app 2")
 
 def get_movies():
     collection_ref = db.collection("movies")
